@@ -1,0 +1,9 @@
+---
+ubuntu_vnc_packages:
+  - gnome-core
+  - vnc4server
+default_passwd: Ubuntu123
+vnc_client_res: "1024x600"
+vnc_users:
+  - name: 'selenium'
+    vnc_num: 1

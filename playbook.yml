@@ -1,0 +1,7 @@
+---
+- hosts: selenium-grid
+  sudo: true
+  roles:
+    - server
+    #- virtualbox
+    - vnc
