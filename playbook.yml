@@ -1,7 +1,9 @@
 ---
 - hosts: selenium-grid
   sudo: true
+  sudo_user: selenium
   roles:
     - server
     #- virtualbox
-    - vnc
+    #- vnc
+    - modernie_selenium

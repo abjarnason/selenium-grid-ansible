@@ -8,3 +8,6 @@
   sudo: yes
   with_items:
     - python-pycurl
+    - git
+    - zip
+    - bsd-mailx
