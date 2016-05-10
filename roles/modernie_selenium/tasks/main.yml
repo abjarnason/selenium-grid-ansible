@@ -23,6 +23,6 @@
 - name: unzip IE9.Win7.For.Windows.VirtualBox.zip
   command: unzip -o /home/selenium/IE9.Win7.For.Windows.VirtualBox.zip -d /home/selenium/modernie_selenium/VMs/
 
-- name: run mkvm.sh script
-  command: /home/selenium/modernie_selenium/mkvm.sh /home/selenium/modernie_selenium/VMs/IE9\ -\ Win7.ova
-  become_user: selenium
+#- name: run mkvm.sh script
+#  command: /home/selenium/modernie_selenium/mkvm.sh /home/selenium/modernie_selenium/VMs/IE9\ -\ Win7.ova
+#  become_user: selenium

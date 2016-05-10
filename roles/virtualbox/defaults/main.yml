@@ -5,7 +5,7 @@ virtualbox_dkms_enable: yes
 virtualbox_dkms_package_name: virtualbox-dkms
 virtualbox_extension_enable: yes
 virtualbox_extension_version: "{{ virtualbox_version }}.38"
-virtualbox_extension_buildnumber: "105129"
+virtualbox_extension_buildnumber: "106717"
 virtualbox_extension_package_name: "Oracle_VM_VirtualBox_Extension_Pack-{{ virtualbox_extension_version }}-{{ virtualbox_extension_buildnumber }}.vbox-extpack"
 virtualbox_extension_package_url: "http://download.virtualbox.org/virtualbox/{{ virtualbox_extension_version }}/{{ virtualbox_extension_package_name }}"
 virtualbox_dir_tmp: "{{ tempdir.stdout }}"

@@ -1,6 +1,8 @@
 ---
 ubuntu_vnc_packages:
-  - gnome-core
+  #- gnome-core
+  - xfce4
+  - xfce4-goodies
   - vnc4server
 default_passwd: Ubuntu123
 vnc_client_res: "1024x600"
