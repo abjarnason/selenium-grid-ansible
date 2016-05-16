@@ -14,15 +14,15 @@
 - name: get deuac.iso
   get_url: url=https://github.com/tka/SeleniumBox/raw/master/deuac.iso dest=/home/selenium/modernie_selenium/Tools/
 
-- name: get jre-8u91-windows-i586.exe
-  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jdk-8u91-windows-i586.exe dest=/home/selenium/modernie_selenium/Tools/
+- name: get jre-8u92-windows-i586.exe
+  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u92-b14/jre-8u92-windows-x64.exe dest=/home/selenium/modernie_selenium/Tools/
 
-#- name: get IE9.Win7.For.Windows.VirtualBox.zip
-#  get_url: url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE9/Windows/IE9.Win7.For.Windows.VirtualBox.zip dest=/home/selenium/
-#
-#- name: unzip IE9.Win7.For.Windows.VirtualBox.zip
-#  command: unzip -o /home/selenium/IE9.Win7.For.Windows.VirtualBox.zip -d /home/selenium/modernie_selenium/VMs/
-#
+- name: get IE9.Win7.For.Windows.VirtualBox.zip
+  get_url: url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE9/Windows/IE9.Win7.For.Windows.VirtualBox.zip dest=/home/selenium/
+
+- name: unzip IE9.Win7.For.Windows.VirtualBox.zip
+  command: unzip -o /home/selenium/IE9.Win7.For.Windows.VirtualBox.zip -d /home/selenium/modernie_selenium/VMs/
+
 #- name: run mkvm.sh script
 #  command: /home/selenium/modernie_selenium/mkvm.sh /home/selenium/modernie_selenium/VMs/IE9\ -\ Win7.ova
 #  become_user: selenium
