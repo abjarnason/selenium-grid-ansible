@@ -50,6 +50,10 @@
   when: virtualbox_extension_enable
   tags: virtualbox_extension
 
+- name: download virtualbox guest additions iso
+  get_url: url={{ virtualbox_guest_additions_url }} dest=/home/selenium
+  tags: virtualbox_guest_additions
+
 - name: cleanup temporary directory
   file: name={{ tempdir.stdout }} state=absent
   when: virtualbox_extension_enable
