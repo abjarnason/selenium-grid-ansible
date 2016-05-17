@@ -1,0 +1,3 @@
+[selenium-grid]
+ip_address ansible_sudo_pass='Ubuntu123' ie_version='IE9'
+ip_address ansible_sudo_pass='Ubuntu123' ie_version='IE10'
