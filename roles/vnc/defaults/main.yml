@@ -5,8 +5,8 @@ ubuntu_vnc_packages:
   - xfce4-goodies
   - gnome-icon-theme
   - vnc4server
-default_passwd: Ubuntu123
-vnc_client_res: "1024x600"
+default_passwd: storystream123
+vnc_client_res: "1024x768"
 vnc_users:
-  - name: 'selenium'
+  - name: 'storystream'
     vnc_num: 1

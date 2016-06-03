@@ -9,7 +9,7 @@
 - name: Copy the defult password file
   template:
     src: password.j2
-    dest: /tmp/file 
+    dest: /tmp/file
 
 - name: vncserver command
   shell: "sudo -u {{ item.name }} -i vncserver </tmp/file >/tmp/vncpasswd.1 2>/tmp/vncpasswd.2"
