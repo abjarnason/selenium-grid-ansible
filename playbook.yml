@@ -1,4 +1,11 @@
 ---
+- hosts: raspberry
+  sudo: yes
+  #sudo_user: pi
+  roles:
+    - oracle-java-8
+    - selenium-standalone-server
+    - nodejs 
 - hosts: selenium-grid
   sudo: yes
   #sudo_user: selenium
