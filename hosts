@@ -1,6 +1,0 @@
-[raspberry]
-localhost ansible_sudo_pass='raspberry' ansible_connection=local
-
-#[selenium-grid]
-#ip_address ansible_sudo_pass='Ubuntu123' ie_version='IE9'
-#ip_address ansible_sudo_pass='Ubuntu123' ie_version='IE10'
