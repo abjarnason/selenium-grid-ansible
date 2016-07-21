@@ -5,7 +5,7 @@
     - selenium-standalone-server
 - hosts: ie-machines
   roles:
-    #- ie-machines-apt-packages
-    #- vnc
-    #- virtualbox
-    #- modernie_selenium
+    - ie-machines-apt-packages
+    - vnc
+    - virtualbox
+    - modernie_selenium
