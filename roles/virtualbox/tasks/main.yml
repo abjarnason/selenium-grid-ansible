@@ -1,30 +1,25 @@
 ---
 - name: add virtualbox apt key
-  sudo: yes
   action: apt_key url=http://download.virtualbox.org/virtualbox/debian/oracle_vbox.asc state=present
   tags: virtualbox
 
 - name: add virtualbox repository
-  sudo: yes
   action: apt_repository repo="deb http://download.virtualbox.org/virtualbox/debian {{ansible_lsb.codename}} contrib" state=present update_cache=yes
   when: "ansible_distribution_version not in ['14.04']"
   tags: virtualbox
 
 - name: add virtualbox repository
-  sudo: yes
   action: apt_repository repo="deb http://download.virtualbox.org/virtualbox/debian trusty contrib" state=present update_cache=yes
   when: "ansible_distribution_version in ['14.04']"
   tags: virtualbox
 
 - name: install virtualbox
-  sudo: yes
   action: apt pkg="{{item}}" state=present update_cache=yes
   with_items:
-      - "{{virtualbox_package_name}}"
+      - "{{ virtualbox_package_name }}"
   tags: virtualbox
 
 - name: install additional virtualbox dkms package
-  sudo: yes
   action: apt pkg="{{item}}" state=present update_cache=yes
   with_items:
       - "{{virtualbox_dkms_package_name}}"
@@ -32,7 +27,6 @@
   tags: virtualbox
 
 - name: create temporary directory
-  sudo: yes
   shell: mktemp -d
   register: tempdir
   when: virtualbox_extension_enable
@@ -44,7 +38,6 @@
   tags: virtualbox_extension
 
 - name: install extension
-  sudo: yes
   ignore_errors: true
   command: VBoxManage extpack install {{ virtualbox_dir_tmp }}/{{ virtualbox_extension_package_name }}
   when: virtualbox_extension_enable
@@ -52,6 +45,8 @@
 
 - name: download virtualbox guest additions iso
   get_url: url={{ virtualbox_guest_additions_url }} dest=/home/selenium
+  become: True
+  become_user: storystream
   tags: virtualbox_guest_additions
 
 - name: cleanup temporary directory

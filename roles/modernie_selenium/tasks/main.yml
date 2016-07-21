@@ -1,21 +1,34 @@
 ---
 - name: get modernie_selenium from Github
-  git: repo=https://github.com/abjarnason/modernie_selenium.git dest=/home/storystream/modernie_selenium/
+  git: repo=https://github.com/abjarnason/modernie_selenium.git dest=~/modernie_selenium
+  become: True
+  become_user: storystream
 
-- name: get selenium-server-standalone-2.53.0.jar
-  get_url: url=http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.0.jar dest=/home/storystream/modernie_selenium/Tools/selenium_conf/
+- name: get selenium-server-standalone-2.53.1.jar
+  get_url: url=http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar dest=~/modernie_selenium/Tools/selenium_conf
+  become: True
+  become_user: storystream
 
-- name: get IEDriverServer_Win32_2.53.0.zip
-  get_url: url=http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.0.zip dest=/home/storystream/
+- name: get IEDriverServer_Win32_2.53.1.zip
+  get_url: url=http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.1.zip dest=~/
+  become: True
+  become_user: storystream
 
-- name: unzip IEDriverServer_Win32_2.53.0.zip
-  command: unzip -o /home/storystream/IEDriverServer_Win32_2.53.0.zip -d /home/storystream/modernie_selenium/Tools/selenium_conf/
+- name: unzip IEDriverServer_Win32_2.53.1.zip
+  command: unzip -o /home/storystream/IEDriverServer_Win32_2.53.1.zip -d ~/modernie_selenium/Tools/selenium_conf/
+  #unarchive: src=~/IEDriverServer_Win32_2.53.1.zip dest=~/modernie_selenium/Tools/selenium_conf/
+  become: True
+  become_user: storystream
 
 - name: get deuac.iso
-  get_url: url=https://github.com/tka/SeleniumBox/raw/master/deuac.iso dest=/home/storystream/modernie_selenium/Tools/
+  get_url: url=https://github.com/tka/SeleniumBox/raw/master/deuac.iso dest=~/modernie_selenium/Tools/
+  become: True
+  become_user: storystream
 
-- name: get jre-8u91-windows-i586.exe
-  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u91-b14/jre-8u91-windows-i586.exe dest=/home/storystream/modernie_selenium/Tools/ headers='Cookie:oraclelicense=accept-securebackup-cookie'
+- name: get jre-8u65-windows-i586.exe
+  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jre-8u65-windows-i586.exe dest=~/modernie_selenium/Tools/ headers='Cookie:oraclelicense=accept-securebackup-cookie'
+  become: True
+  become_user: storystream
 
 #- name: get IE8.Win7.For.Windows.VirtualBox.zip
 #  get_url: url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE8/Windows/IE8.Win7.For.Windows.VirtualBox.zip dest=/home/storystream/
@@ -48,10 +61,10 @@
 #- name: unzip IE11.Win7.For.Windows.VirtualBox.zip
 #  command: unzip -o /home/storystream/IE11.Win7.For.Windows.VirtualBox.zip -d /home/storystream/modernie_selenium/VMs/
 #  when: ie_version == 'IE11'
-
-- name: make user storystream the owner the modernie_selenium directory (and it's sub-directories)
-  command: chown storystream:storystream -R /home/storystream/modernie_selenium
-
+#
+#- name: make user storystream the owner the modernie_selenium directory (and it's sub-directories)
+#  command: chown storystream:storystream -R /home/storystream/modernie_selenium
+#
 #- name: run mkvm.sh script
 #  command: /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE9\ -\ Win7.ova
 #  become: yes

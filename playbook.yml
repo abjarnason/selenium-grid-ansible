@@ -1,11 +1,11 @@
 ---
 - hosts: raspberry-pi
   roles:
-    - raspberry-pi-apt-packages
-    - selenium-standalone-server
+    #- raspberry-pi-apt-packages
+    #- selenium-standalone-server
 - hosts: ie-machines
   roles:
-    - ie-machines-apt-packages
+    #- ie-machines-apt-packages
     #- vnc
     #- virtualbox
-    #- modernie_selenium
+    - modernie_selenium
