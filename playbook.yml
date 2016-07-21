@@ -9,3 +9,6 @@
     - vnc
     - virtualbox
     - modernie_selenium
+- hosts: ff-gc-machine
+  roles:
+    - vnc
