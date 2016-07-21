@@ -1,32 +1,46 @@
 ---
 - name: get modernie_selenium from Github
-  git: repo=https://github.com/abjarnason/modernie_selenium.git dest=~/modernie_selenium
+  git:
+    repo=https://github.com/abjarnason/modernie_selenium.git
+    dest=~/modernie_selenium
   become: True
   become_user: storystream
 
 - name: get selenium-server-standalone-2.53.1.jar
-  get_url: url=http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar dest=~/modernie_selenium/Tools/selenium_conf
+  get_url:
+    url=http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
+    dest=~/modernie_selenium/Tools/selenium_conf
   become: True
   become_user: storystream
 
 - name: get IEDriverServer_Win32_2.53.1.zip
-  get_url: url=http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.1.zip dest=~/
+  get_url:
+    url=http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.1.zip
+    dest=~/
   become: True
   become_user: storystream
 
 - name: unzip IEDriverServer_Win32_2.53.1.zip
-  command: unzip -o /home/storystream/IEDriverServer_Win32_2.53.1.zip -d ~/modernie_selenium/Tools/selenium_conf/
-  #unarchive: src=~/IEDriverServer_Win32_2.53.1.zip dest=~/modernie_selenium/Tools/selenium_conf/
+  command:
+    unzip -o /home/storystream/IEDriverServer_Win32_2.53.1.zip -d ~/modernie_selenium/Tools/selenium_conf/
+  #unarchive:
+  #  src=~/IEDriverServer_Win32_2.53.1.zip
+  #  dest=~/modernie_selenium/Tools/selenium_conf/
   become: True
   become_user: storystream
 
 - name: get deuac.iso
-  get_url: url=https://github.com/tka/SeleniumBox/raw/master/deuac.iso dest=~/modernie_selenium/Tools/
+  get_url:
+    url=https://github.com/tka/SeleniumBox/raw/master/deuac.iso
+    dest=~/modernie_selenium/Tools/
   become: True
   become_user: storystream
 
 - name: get jre-8u65-windows-i586.exe
-  get_url: url=http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jre-8u65-windows-i586.exe dest=~/modernie_selenium/Tools/ headers='Cookie:oraclelicense=accept-securebackup-cookie'
+  get_url:
+    url=http://download.oracle.com/otn-pub/java/jdk/8u65-b17/jre-8u65-windows-i586.exe
+    dest=~/modernie_selenium/Tools/
+    headers='Cookie:oraclelicense=accept-securebackup-cookie'
   become: True
   become_user: storystream
 

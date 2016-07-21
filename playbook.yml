@@ -2,7 +2,6 @@
 - hosts: raspberry-pi
   roles:
     - raspberry-pi-apt-packages
-    - selenium-standalone-server
 - hosts: ie-machines
   roles:
     - ie-machines-apt-packages
@@ -12,3 +11,4 @@
 - hosts: ff-gc-machine
   roles:
     - vnc
+    - ff-gc-machine-apt-packages
