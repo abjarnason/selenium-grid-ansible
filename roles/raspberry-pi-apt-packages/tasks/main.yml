@@ -1,0 +1,14 @@
+---
+- name: Import the NodeSource GPG key into apt
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+- name: Add NodeSource deb repository
+  apt_repository: repo='deb https://deb.nodesource.com/node_4.x jessie main' state=present
+- name: Add NodeSource deb-src repository
+  apt_repository: repo='deb-src https://deb.nodesource.com/node_4.x jessie main' state=present
+- name: Update apt cache
+  apt: update_cache=yes cache_valid_time=3600
+- name: Install apt packages
+  apt: name={{ item }} state=present
+  with_items:
+    - oracle-java8-jdk
+    - nodejs

@@ -1,16 +1,11 @@
 ---
-- hosts: raspberry
-  sudo: yes
-  #sudo_user: pi
+- hosts: raspberry-pi
   roles:
-    - oracle-java-8
+    - raspberry-pi-apt-packages
     - selenium-standalone-server
-    - nodejs 
-- hosts: selenium-grid
-  sudo: yes
-  #sudo_user: selenium
+- hosts: ie-machines
   roles:
-    - server
-    - vnc
-    - virtualbox
-    - modernie_selenium
+    - ie-machines-apt-packages
+    #- vnc
+    #- virtualbox
+    #- modernie_selenium
