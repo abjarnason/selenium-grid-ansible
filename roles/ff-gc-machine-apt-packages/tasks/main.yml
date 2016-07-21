@@ -1,0 +1,52 @@
+---
+- name: Install add-apt-repostory
+  apt:
+    name=software-properties-common state=present
+
+- name: Add the Google signing key for linux
+  apt_key:
+    url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+    state=present
+
+- name: Add the Google chrome deb repository
+  apt_repository:
+    repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+    state=present
+
+- name: Add the Webupd8 Oracle Java repository
+  apt_repository:
+    repo='ppa:webupd8team/java'
+
+- name: Accept the Java 8 license
+  debconf:
+    name='oracle-java8-installer'
+    question='shared/accepted-oracle-license-v1-1'
+    value='true'
+    vtype='select'
+
+- name: Update apt cache
+  apt:
+    update_cache=yes
+    cache_valid_time=3600
+
+- name: Update all packages to latest version
+  apt:
+    upgrade=dist
+
+- name: Install apt packages
+  apt:
+    name={{ item }}
+    state=present
+  with_items:
+    - firefox
+    - google-chrome-stable
+    - oracle-java8-installer
+    - ca-certificates
+    - oracle-java8-set-default
+
+- name: Get selenium-server-standalone-2.53.1.jar
+  get_url:
+    url=http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
+    dest=~/
+  become: True
+  become_user: storystream
