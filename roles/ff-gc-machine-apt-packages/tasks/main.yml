@@ -3,15 +3,15 @@
   apt:
     name=software-properties-common state=present
 
-- name: Add the Google signing key for linux
-  apt_key:
-    url=https://dl-ssl.google.com/linux/linux_signing_key.pub
-    state=present
+#- name: Add the Google signing key for linux
+#  apt_key:
+#    url=https://dl-ssl.google.com/linux/linux_signing_key.pub
+#    state=present
 
-- name: Add the Google chrome deb repository
-  apt_repository:
-    repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
-    state=present
+#- name: Add the Google chrome deb repository
+#  apt_repository:
+#    repo='deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+#    state=present
 
 - name: Add the Webupd8 Oracle Java repository
   apt_repository:
@@ -29,17 +29,18 @@
     update_cache=yes
     cache_valid_time=3600
 
-- name: Update all packages to latest version
-  apt:
-    upgrade=dist
+#- name: Update all packages to latest version
+#  apt:
+#    upgrade=dist
 
 - name: Install apt packages
   apt:
     name={{ item }}
     state=present
   with_items:
-    - firefox
-    - google-chrome-stable
+    - firefox=47.0+build3-0ubuntu0.14.04.1
+    #- google-chrome-stable
+    - chromium-browser=51.0.2704.79-0ubuntu0.14.04.1.1121
     - oracle-java8-installer
     - ca-certificates
     - oracle-java8-set-default
@@ -48,5 +49,18 @@
   get_url:
     url=http://selenium-release.storage.googleapis.com/2.53/selenium-server-standalone-2.53.1.jar
     dest=~/
+  become: True
+  become_user: storystream
+
+- name: Get chromedriver_linux32.zip 2.22
+  get_url:
+    url=http://chromedriver.storage.googleapis.com/2.22/chromedriver_linux32.zip
+    dest=~/
+  become: True
+  become_user: storystream
+
+- name: Unzip chromedriver_linux32 2.22
+  command:
+    unzip -o /home/storystream/chromedriver_linux32.zip -d /home/storystream/
   become: True
   become_user: storystream

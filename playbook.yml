@@ -10,5 +10,5 @@
     - modernie_selenium
 - hosts: ff-gc-machine
   roles:
-    - vnc
     - ff-gc-machine-apt-packages
+    - vnc
