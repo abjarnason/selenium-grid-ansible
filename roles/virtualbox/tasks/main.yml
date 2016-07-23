@@ -44,7 +44,7 @@
   tags: virtualbox_extension
 
 - name: download virtualbox guest additions iso
-  get_url: url={{ virtualbox_guest_additions_url }} dest=/home/selenium
+  get_url: url={{ virtualbox_guest_additions_url }} dest=~/
   become: True
   become_user: storystream
   tags: virtualbox_guest_additions
