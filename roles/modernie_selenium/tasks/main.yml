@@ -44,14 +44,82 @@
   become: True
   become_user: storystream
 
-#- name: get IE8.Win7.For.Windows.VirtualBox.zip
-#  get_url: url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE8/Windows/IE8.Win7.For.Windows.VirtualBox.zip dest=/home/storystream/
-#  when: ie_version == 'IE8'
+- name: Check if IE8 zip exists
+  stat:
+    path: ~/IE8.Win7.For.Windows.VirtualBox.zip
+  register: ie8_zip_exists
+  when: ie_version == 'ie8'
+  become: True
+  become_user: storystream
+
+- name: Check if IE8 ova exists
+  stat:
+    path: ~/IE8\ -\ Win7.ova
+  register: ie8_ova_exists
+  when: ie_version == 'ie8'
+  become: True
+  become_user: storystream
+
+- name: get IE8.Win7.For.Windows.VirtualBox.zip
+  get_url:
+    url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE8/Windows/IE8.Win7.For.Windows.VirtualBox.zip
+    dest=~/
+  when: ie_version == 'ie8' and ie8_zip_exists == False
+  become: True
+  become_user: storystream
+
+- name: unzip IE8.Win7.For.Windows.VirtualBox.zip
+  command: unzip -o /home/storystream/IE8.Win7.For.Windows.VirtualBox.zip -d /home/storystream/modernie_selenium/VMs/
+  when: ie_version == 'ie8' and ie8_ova_exists == False
+  become: True
+  become_user: storystream
+
+- name: Check if IE9 zip exists
+  stat:
+    path: ~/IE9.Win7.For.Windows.VirtualBox.zip
+  register: ie9_zip_exists
+  when: ie_version == 'ie9'
+  become: True
+  become_user: storystream
+
+- name: Check if IE9 ova exists
+  stat:
+    path: ~/IE9\ -\ Win7.ova
+  register: ie9_ova_exists
+  when: ie_version == 'ie9'
+  become: True
+  become_user: storystream
+
+- name: get IE9.Win7.For.Windows.VirtualBox.zip
+  get_url:
+    url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE9/Windows/IE9.Win7.For.Windows.VirtualBox.zip
+    dest=~/
+  when: ie_version == 'ie9' and ie9_zip_exists == False
+  become: True
+  become_user: storystream
+
+- name: unzip IE9.Win7.For.Windows.VirtualBox.zip
+  command: unzip -o /home/storystream/IE9.Win7.For.Windows.VirtualBox.zip -d /home/storystream/modernie_selenium/VMs/
+  when: ie_version == 'ie9' and ie9_ova_exists == False
+  become: True
+  become_user: storystream
+
+#- name: Check if IE9.Win7.For.Windows.VirtualBox.zip exists
+#  stat:
+#    path: ~/IE9.Win7.For.Windows.VirtualBox.zip
+#  register: ie9_vm_zip_exists
+#  when: ie_version == 'ie9'
+#  become: True
+#  become_user: storystream
 #
 #- name: get IE9.Win7.For.Windows.VirtualBox.zip
-#  get_url: url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE9/Windows/IE9.Win7.For.Windows.VirtualBox.zip dest=/home/storystream/
-#  when: ie_version == 'IE9'
-#
+#  get_url:
+#    url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE9/Windows/IE9.Win7.For.Windows.VirtualBox.zip
+#    dest=~/
+#  when: ie_version == 'ie9' and ie9_vm_zip_exists == False
+#  become: True
+#  become_user: storystream
+
 #- name: get IE10.Win7.For.Windows.VirtualBox.zip
 #  get_url: url=https://az412801.vo.msecnd.net/vhd/VMBuild_20141027/VirtualBox/IE10/Windows/IE10.Win7.For.Windows.VirtualBox.zip dest=/home/storystream/
 #  when: ie_version == 'IE10'
