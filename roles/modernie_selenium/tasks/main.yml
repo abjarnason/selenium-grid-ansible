@@ -16,13 +16,13 @@
 - name: get IEDriverServer_Win32_2.53.1.zip
   get_url:
     url=http://selenium-release.storage.googleapis.com/2.53/IEDriverServer_Win32_2.53.1.zip
-    dest=~/
+    dest=~/modernie_selenium/Tools/selenium_conf/
   become: True
   become_user: storystream
 
 - name: unzip IEDriverServer_Win32_2.53.1.zip
   command:
-    unzip -o /home/storystream/IEDriverServer_Win32_2.53.1.zip -d ~/modernie_selenium/Tools/selenium_conf/
+    unzip -o /home/storystream/modernie_selenium/Tools/selenium_conf/IEDriverServer_Win32_2.53.1.zip -d ~/modernie_selenium/Tools/selenium_conf/
   #unarchive:
   #  src=~/IEDriverServer_Win32_2.53.1.zip
   #  dest=~/modernie_selenium/Tools/selenium_conf/
