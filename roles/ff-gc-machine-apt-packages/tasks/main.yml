@@ -66,8 +66,15 @@
   become: True
   become_user: storystream
 
+- name: Check if chromedriver exists
+  vars:
+    - chromedriver_path: '/home/storystream/chromedriver'
+  stat: path={{ chromedriver_path }}
+  register: chromedriver
+
 - name: Unzip chromedriver_linux32 2.22
   command:
     unzip -o /home/storystream/chromedriver_linux32.zip -d /home/storystream/
   become: True
   become_user: storystream
+  when: chromedriver.stat.exists == False
