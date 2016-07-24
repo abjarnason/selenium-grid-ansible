@@ -80,7 +80,7 @@
   become_user: storystream
 
 - name: Check if IE9 zip exists
-  var:
+  vars:
     - ie9_zip_path: '/home/storystream/modernie_selenium/VMs/IE9.Win7.For.Windows.VirtualBox.zip'
   stat: path={{ ie9_zip_path }}
   register: ie9_zip
@@ -108,7 +108,7 @@
   become_user: storystream
 
 - name: Check if IE10 zip exists
-  var:
+  vars:
     - ie10_zip_path: '/home/storystream/modernie_selenium/VMs/IE10.Win7.For.Windows.VirtualBox.zip'
   stat: path={{ ie10_zip_path }}
   register: ie10_zip
@@ -136,7 +136,7 @@
   become_user: storystream
 
 - name: Check if IE11 zip exists
-  var:
+  vars:
     - ie11_zip_path: '/home/storystream/modernie_selenium/VMs/IE11.Win7.For.Windows.VirtualBox.zip'
   stat: path={{ ie11_zip_path }}
   register: ie11_zip
@@ -163,12 +163,12 @@
   become: True
   become_user: storystream
 
-#- name: Add cronjob to create IE8 VM
-#  cron:
-#    special_time=hourly
-#    name="Delete and re-create modernie_selenium VM"
-#    user="storystream"
-#    job="/home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE8\ -\Win7"
-#  when: ie_version == 'ie8'
-#  become: True
-#  become_user: storystream
+- name: Add cronjob to create IE8 VM
+  cron:
+    special_time=hourly
+    name='Delete and re-create modernie_selenium VM'
+    user='storystream'
+    job='/home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE8 - Win7'
+  when: ie_version == 'ie8'
+  become: True
+  become_user: storystream
