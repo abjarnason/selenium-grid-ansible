@@ -1,4 +1,11 @@
 ---
+- name: Set timezone variables
+  copy: content='Europe/London\n' dest=/etc/timezone backup=yes
+  notify: update tzdata
+
+- name: update tzdata
+  command: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
+
 - name: Update apt cache
   apt:
     update_cache=yes
