@@ -10,6 +10,11 @@
   apt:
     name=software-properties-common state=present
 
+- name: Add the Ubuntu Mozilla Security repository
+  apt_repository:
+    repo='ppa:ubuntu-mozilla-security/ppa'
+    state=present
+
 #- name: Add the Google signing key for linux
 #  apt_key:
 #    url=https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -45,7 +50,7 @@
     name={{ item }}
     state=present
   with_items:
-    - firefox=47.0+build3-0ubuntu0.14.04.1
+    - firefox=47.0.1+build1-0ubuntu0.14.04.1
     #- google-chrome-stable
     - chromium-browser=51.0.2704.79-0ubuntu0.14.04.1.1121
     - oracle-java8-installer
