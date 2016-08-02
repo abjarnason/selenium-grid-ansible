@@ -37,6 +37,7 @@
   with_items:
     - oracle-java8-jdk=8u65
     - nodejs
+    - mercurial 
 
 - name: Get selenium-server-standalone-2.53.1.jar
   get_url:
