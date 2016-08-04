@@ -83,3 +83,12 @@
   become: True
   become_user: storystream
   when: chromedriver.stat.exists == False
+
+- name: Add cronjob to bring up Selenium node on startup
+  cron:
+    special_time=reboot
+    name='Run Java command for Selenum host on startup'
+    user='storystream'
+    job='sudo -u storystream java -jar selenium-server-standalone-2.53.1.jar -role node -nodeConfig /home/storystream/config.json -Dwebdriver.chrome.driver=/home/storystream/chromedriver'
+  become: True
+  become_user: storystream
