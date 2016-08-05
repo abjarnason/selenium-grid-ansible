@@ -6,20 +6,20 @@
 - name: update tzdata
   command: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
 
-- name: Import the NodeSource GPG key into apt
-  apt_key:
-    url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    state=present
-
-- name: Add NodeSource deb repository
-  apt_repository:
-    repo='deb https://deb.nodesource.com/node_4.x jessie main'
-    state=present
-
-- name: Add NodeSource deb-src repository
-  apt_repository:
-    repo='deb-src https://deb.nodesource.com/node_4.x jessie main'
-    state=present
+#- name: Import the NodeSource GPG key into apt
+#  apt_key:
+#    url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+#    state=present
+# 
+#- name: Add NodeSource deb repository
+#  apt_repository:
+#    repo='deb https://deb.nodesource.com/node_4.x jessie main'
+#    state=present
+# 
+#- name: Add NodeSource deb-src repository
+#  apt_repository:
+#    repo='deb-src https://deb.nodesource.com/node_4.x jessie main'
+#    state=present
 
 - name: Update apt cache
   apt:
@@ -45,3 +45,13 @@
     dest=~/
   become: True
   become_user: pi
+
+- name: Add cronjob to bring up Selenium hub on startup
+  cron:
+    special_time=reboot
+    name='Bring up Selenium hub on startup'
+    user='pi'
+    job='sudo -u pi java -jar selenium-server-standalone-2.53.1.jar -role hub -port 4444'
+  become: True
+  become_user: pi
+
