@@ -144,7 +144,7 @@
 
 - name: Check if IE11 ova exists
   vars:
-    - ie11_ova_path: '/home/storystream/modernie_selenium/VMs/IE11\ -\ Win7.ova'
+    - ie11_ova_path: '/home/storystream/modernie_selenium/VMs/IE11 - Win7.ova'
   stat: path={{ ie11_ova_path }}
   register: ie11_ova
   when: ie_version == 'ie11'
