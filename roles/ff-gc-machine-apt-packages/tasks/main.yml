@@ -1,10 +1,11 @@
 ---
 - name: Set timezone variables
-  copy: content='Europe/London\n' dest=/etc/timezone backup=yes
+  copy: content='GMT' dest=/etc/timezone backup=yes
   notify: update tzdata
 
 - name: update tzdata
   command: /usr/sbin/dpkg-reconfigure --frontend noninteractive tzdata
+  when: ansible_date_time.tz != 'GMT'
 
 - name: Install add-apt-repostory
   apt:
