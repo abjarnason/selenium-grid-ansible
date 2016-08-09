@@ -168,7 +168,7 @@
     special_time=reboot
     name='Create the modernie_selenium VM for IE8'
     user='storystream'
-    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE8\ -\ Win7.ova'
+    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE8\ -\ Win7.ova --delete "IE8 - Win7"'
   when: ie_version == 'ie8'
   become: True
   become_user: storystream
@@ -178,7 +178,7 @@
     special_time=reboot
     name='Create the modernie_selenium VM for IE9'
     user='storystream'
-    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE9\ -\ Win7.ova'
+    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE9\ -\ Win7.ova'--delete "IE9 - Win7"'
   when: ie_version == 'ie9'
   become: True
   become_user: storystream
@@ -188,7 +188,7 @@
     special_time=reboot
     name='Create the modernie_selenium VM for IE10'
     user='storystream'
-    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE10\ -\ Win7.ova'
+    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE10\ -\ Win7.ova --delete "IE10 - Win7"'
   when: ie_version == 'ie10'
   become: True
   become_user: storystream
@@ -198,7 +198,7 @@
     special_time=reboot
     name='Create the modernie_selenium VM for IE11'
     user='storystream'
-    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE11\ -\ Win7.ova'
+    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE11\ -\ Win7.ova --delete "IE11 - Win7"'
   when: ie_version == 'ie11'
   become: True
   become_user: storystream
