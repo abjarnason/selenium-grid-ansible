@@ -178,7 +178,7 @@
     special_time=reboot
     name='Create the modernie_selenium VM for IE9'
     user='storystream'
-    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE9\ -\ Win7.ova'--delete "IE9 - Win7"'
+    job='sudo -u storystream /home/storystream/modernie_selenium/mkvm.sh /home/storystream/modernie_selenium/VMs/IE9\ -\ Win7.ova--delete "IE9 - Win7"'
   when: ie_version == 'ie9'
   become: True
   become_user: storystream
